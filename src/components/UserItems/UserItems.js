@@ -1,20 +1,30 @@
 import React, { Component} from 'react';
+import { connect } from 'react-redux';
 
 class UserItems extends Component {
+    componentDidMount(){
+        this.getCount();
+    }
+    getCount = () => {
+        this.props.dispatch({type: 'FETCH_COUNT'})
+    }
+    
 
-    mapProjects = () => {
-        return (
-            this.props.projects.map((project, i) => {
-                return <ProjectDetails key={i} project={project} />
+    mapUsers = () => {
+        return(
+            this.props.users.map((user, i) => {
+                return (
+                     <li key={i} > {user.username} {user.count} </li>
+                )
             })
         )
     }
-    
+
     render () {
         return (
             <div>
                 <ul>
-
+                    {this.mapUsers()}
                 </ul>
 
             </div>
@@ -22,4 +32,8 @@ class UserItems extends Component {
     }
 }
 
-export default UserItems;
+const mapStateToProps = state => ({
+    users: state.shelfReducer.itemCount
+});
+
+export default connect(mapStateToProps)(UserItems);
