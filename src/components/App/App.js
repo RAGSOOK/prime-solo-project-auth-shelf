@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import UserItems from '../UserItems/UserItems';
+import ItemForm from '../ItemForm/ItemForm.js';
 
 import './App.css';
 
@@ -59,7 +60,10 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/userItems"
-              component={UserItems}
+              component={UserItems}/>
+              <ProtectedRoute
+            path="/addItem"
+              component={ItemForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
