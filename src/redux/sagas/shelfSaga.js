@@ -11,6 +11,16 @@ function* postItem(action) {
     }
 }
 
+function* userItems() {
+    try {
+        const response = yield axios.get('api/shelf/count');
+        yield put({type: postCount, payload: response});
+    } catch (error) {
+        console.log('Error in Count GET', error);
+        alert('something went wrong');
+    }
+}
+
 function* shelfSaga() {
   yield takeEvery('SEND_ITEM', postItem);
 }
