@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
+import { type } from 'os';
 
 function* postItem(action) {
     try {
@@ -11,8 +12,23 @@ function* postItem(action) {
     }
 }
 
+function* getItem(){
+    try{
+        const response = yield axios.get('/api/shelf');
+
+        
+         yield put({type: 'GET_SHELF'})
+         
+        
+    }catch (error) {
+        console.log('Saga Shelf get request failed', error);
+    } 
+    
+}
+
 function* shelfSaga() {
   yield takeEvery('SEND_ITEM', postItem);
+  yield takeEvery('GET_SHELF', getItem);
 }
 
 export default shelfSaga;
