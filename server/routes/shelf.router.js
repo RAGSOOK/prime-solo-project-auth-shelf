@@ -14,7 +14,21 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    if(req.isAuthenticated()){
+        const item = req.body;
+        console.log(item);
+        const queryText = `INSERT INTO "item" ("description", "image_url", "person_id")
+                           VALUES ($1, $2, $3);`;
+        pool.query(queryText, [item.description, item.image_url, req.user.id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('Error in /api/shelf POST', error);
+        });
+    } else{
+        res.sendStatus(403);
+    }
 });
 
 
