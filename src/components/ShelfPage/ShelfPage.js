@@ -59,4 +59,4 @@ const mapStateToProps = reduxStore => ({
     reduxStore: reduxStore
 })
 
-export default connect()(ShelfPage);
+export default connect(mapStateToProps)(ShelfPage);

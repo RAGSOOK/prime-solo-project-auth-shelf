@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const shelfReducer = (state = [], action) => {
   switch(action.type){
-    case 'GET_SHELF':
+    case 'SET_SHELF':
     return action.payload;
   }
     return state;
