@@ -17,7 +17,7 @@ class ItemForm extends Component{
         this.props.dispatch(action);
     }
 
-    handleChange = () => {
+    handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
 
