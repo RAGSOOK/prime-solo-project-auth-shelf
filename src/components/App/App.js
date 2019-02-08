@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import UserItems from '../UserItems/UserItems';
 import ItemForm from '../ItemForm/ItemForm.js';
+import ShelfPage from '../ShelfPage/ShelfPage';
 
 import './App.css';
 
@@ -59,6 +60,14 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/addItem"
+              component={ItemForm}/>
+
+            <ProtectedRoute
+              exact
+              path="/shelfPage"
+              component={ShelfPage}/>
+            <ProtectedRoute
               path="/userItems"
               component={UserItems}/>
               <ProtectedRoute
